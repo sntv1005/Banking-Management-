@@ -26,14 +26,14 @@ public class CustomerController {
         return customerService.create(req);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
-        if (customerRepo.findByEmail(customer.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body("Email already registered!");
-        }
-        Customer saved = customerRepo.save(customer);
-        return ResponseEntity.ok(saved);
-    }
+//    @PostMapping("/create")
+//    public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
+//        if (customerRepo.findByEmail(customer.getEmail()).isPresent()) {
+//            return ResponseEntity.badRequest().body("Email already registered!");
+//        }
+//        Customer saved = customerRepo.save(customer);
+//        return ResponseEntity.ok(saved);
+//    }
 
     @GetMapping("/getAll")
     public List<Customer> all(){

@@ -26,7 +26,7 @@ public class Customer {
     @NotBlank private String email;
     @NotBlank
     private String phone;
-    @NotBlank
+//    @NotBlank
     private String password;
 
 
