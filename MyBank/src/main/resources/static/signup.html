@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - My Bank</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+    }
+    .container {
+        width: 350px;
+        margin: 80px auto;
+        padding: 25px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    h2 {
+        text-align: center;
+        color: #003366;
+    }
+    label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        background: #0055aa;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0077cc;
+    }
+    .msg {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Create New Account</h2>
+  <form id="signupForm">
+    <label>Name</label>
+    <input type="text" id="name" required>
+
+    <label>Email</label>
+    <input type="email" id="email" required>
+
+    <label>Password</label>
+    <input type="password" id="password" required>
+
+    <button type="submit">Sign Up</button>
+  </form>
+  <div class="msg" id="signupMsg"></div>
+</div>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const data = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value
+      };
+
+      fetch("/api/customer/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(resp => {
+          document.getElementById("signupMsg").innerText = "Account created successfully! Redirecting to login...";
+          setTimeout(() => location.href = "login.html", 1500);
+      })
+      .catch(err => {
+          document.getElementById("signupMsg").innerText = "Error creating account!";
+      });
+  });
+</script>
+</body>
+</html>

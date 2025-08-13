@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Bank - Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .auth-buttons button {
+            background: #ffcc00;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .auth-buttons button:hover {
+            background: #ffdd33;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .menu-grid button {
+            padding: 15px;
+            font-size: 1rem;
+            background: #0055aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .menu-grid button:hover {
+            background: #0077cc;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Bank</h1>
+    <div class="auth-buttons">
+        <button onclick="location.href='login.html'">Login</button>
+        <button onclick="location.href='signup.html'">Sign Up</button>
+    </div>
+</header>
+
+<div class="menu-grid">
+    <button onclick="location.href='account.html'">Create Account</button>
+    <button onclick="location.href='customer.html'">Customer</button>
+    <button onclick="location.href='transaction.html'">Transactions</button>
+    <button onclick="location.href='creditcard.html'">Issue Credit Card</button>
+    <button onclick="location.href='statement.html'">View Statement</button>
+</div>
+
+</body>
+</html>
