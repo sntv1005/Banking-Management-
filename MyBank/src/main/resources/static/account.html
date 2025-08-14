@@ -4,16 +4,39 @@
     <meta charset="UTF-8">
     <title>Create Account</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-<h2>Create New Account</h2>
-<form id="accountForm">
-    <input type="text" id="customerId" placeholder="Customer ID" required><br>
-    <input type="text" id="accType" placeholder="Savings/Current" required><br>
-    <input type="number" id="balance" placeholder="Initial Balance" required><br>
-    <button type="submit">Create Account</button>
-</form>
-<div id="result"></div>
+
+<div class="form-container">
+    <h2>Create New Account</h2>
+
+    <form id="accountForm">
+        <div class="form-group">
+            <input type="number" id="customerId" placeholder="Customer ID" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="accType" placeholder="Savings / Current" required>
+        </div>
+        <div class="form-group">
+            <input type="number" id="initialDeposit" placeholder="Initial Deposit" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Create Account</button>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <button id="backBtn" class="back-button">⬅ Back to Menu</button>
+    </div>
+</div>
+
 <script src="js/account.js"></script>
+<script>
+    document.getElementById("backBtn").addEventListener("click", function() {
+        window.location.href = "menu.html";
+    });
+</script>
+
 </body>
 </html>

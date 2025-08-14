@@ -7,6 +7,8 @@ import com.bank.MyBank.request.CreateCustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class CustomerService {
 
@@ -16,6 +18,7 @@ public class CustomerService {
 
     public Customer create(CreateCustomerRequest req){
         Customer c = new Customer();
+        c.setCustomerId("CUS-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
         c.setName(req.name); c.setEmail(req.email); c.setPhone(req.phone);
         c.setMonthlyIncome(req.monthlyIncome);
         return customerRepo.save(c);

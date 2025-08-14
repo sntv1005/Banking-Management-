@@ -18,8 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Numeric DB primary key
+
+    @Column(unique = true, nullable = false)
+    private String customerId; // CUS-xxxxxx format
 
     @NotBlank private String name;
     @Email
