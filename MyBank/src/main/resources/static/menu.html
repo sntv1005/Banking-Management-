@@ -3,85 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>My Bank - Services</title>
-    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          background: linear-gradient(135deg, #dbe9f4, #a7c7e7);
         }
 
+        /* Title */
         header {
-            background: #003366;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          background: #003366;
+          color: white;
+          padding: 15px 0;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
+        /* Center menu row */
+        main {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .auth-buttons button {
-            background: #ffcc00;
-            border: none;
-            padding: 8px 15px;
-            margin-left: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
+        .menu-row {
+          display: flex;
+          gap: 20px;
         }
 
-        .auth-buttons button:hover {
-            background: #ffdd33;
+        .menu-row button {
+          padding: 15px 25px;
+          font-size: 1rem;
+          background: #0055aa;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background 0.3s;
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
+        .menu-row button:hover {
+          background: #0077cc;
         }
 
-        .menu-grid button {
-            padding: 15px;
-            font-size: 1rem;
-            background: #0055aa;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
+        /* Bottom corner buttons */
+        footer {
+          position: relative;
         }
 
-        .menu-grid button:hover {
-            background: #0077cc;
+        .corner-btn {
+          position: fixed;
+          bottom: 20px;
+          padding: 10px 20px;
+          background: #ffcc00;
+          border-radius: 5px;
+          font-weight: bold;
+          text-decoration: none;
+          color: black;
+          transition: background 0.3s;
+        }
+
+        .corner-btn:hover {
+          background: #ffdd33;
+        }
+
+        .login-btn {
+          left: 20px;
+        }
+
+        .signup-btn {
+          right: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>My Bank</h1>
-    <div class="auth-buttons">
-        <button onclick="location.href='login.html'">Login</button>
-        <button onclick="location.href='signup.html'">Sign Up</button>
-    </div>
-</header>
+<header>My Bank</header>
 
-<div class="menu-grid">
-    <button onclick="location.href='account.html'">Create Account</button>
-    <button onclick="location.href='customer.html'">Customer</button>
-    <button onclick="location.href='transaction.html'">Transactions</button>
-    <button onclick="location.href='creditcard.html'">Issue Credit Card</button>
-    <button onclick="location.href='statement.html'">View Statement</button>
-</div>
+<main>
+    <div class="menu-row">
+        <button onclick="location.href='account.html'">Create Account</button>
+        <button onclick="location.href='customer.html'">Customer</button>
+        <button onclick="location.href='transaction.html'">Transactions</button>
+        <button onclick="location.href='creditcard.html'">Issue Credit Card</button>
+        <button onclick="location.href='statement.html'">View Statement</button>
+    </div>
+</main>
+
+<footer>
+    <a href="login.html" class="corner-btn login-btn">Login</a>
+    <a href="signup.html" class="corner-btn signup-btn">Sign Up</a>
+</footer>
 
 </body>
 </html>
