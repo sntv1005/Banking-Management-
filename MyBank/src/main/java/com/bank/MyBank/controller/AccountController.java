@@ -5,6 +5,8 @@ import com.bank.MyBank.repository.AccountRepo;
 import com.bank.MyBank.request.CreateAccountRequest;
 import com.bank.MyBank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +21,24 @@ public class AccountController {
     @Autowired
     private AccountRepo accountRepo;
 
+    @GetMapping("/by-customer/{customerId}")
+    public ResponseEntity<Account> getAccountByCustomerId(@PathVariable Long customerId) {
+        Account account = accountService.getAccountByCustomerId(customerId);
+        if (account != null) {
+            return ResponseEntity.ok(account);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @PostMapping("/create")
-    public Account createAccount(@RequestBody CreateAccountRequest createAccountRequest){
-        return accountService.createAccount(createAccountRequest);
+    public ResponseEntity<?> createAccount(@RequestBody CreateAccountRequest createAccountRequest) {
+        if (accountService.getAccountByCustomerId(createAccountRequest.customerId) != null) {
+            return ResponseEntity
+                    .status(HttpStatus.CONFLICT)
+                    .body("Account already exists for this customer");
+        }
+        Account created = accountService.createAccount(createAccountRequest);
+        return ResponseEntity.ok(created);
     }
 
     @GetMapping("/getAccount")

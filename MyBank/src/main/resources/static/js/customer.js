@@ -4,7 +4,7 @@ document.getElementById("customerForm").addEventListener("submit", function(e) {
     // DOB Validation - must be at least 18
     const dob = new Date(document.getElementById("dateOfBirth").value);
     const today = new Date();
-    const age = today.getFullYear() - dob.getFullYear();
+    let age = today.getFullYear() - dob.getFullYear();
     const monthDiff = today.getMonth() - dob.getMonth();
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
         age--;
