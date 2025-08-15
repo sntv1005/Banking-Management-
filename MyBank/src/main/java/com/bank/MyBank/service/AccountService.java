@@ -49,4 +49,8 @@ public class AccountService {
     public void save(Account a){ accountRepo.save(a); }
 
 
+    public Account getAccountByCustomerId(Long customerId) {
+        return accountRepo.findByCustomerId(customerId).orElse(null);
+    }
+
 }
