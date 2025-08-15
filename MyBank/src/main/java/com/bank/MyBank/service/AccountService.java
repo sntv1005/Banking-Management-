@@ -28,6 +28,8 @@ public class AccountService {
                 .orElseThrow(() -> new BadRequestException("Invalid customerId"));
         Account a = new Account();
         a.setCustomer(c);
+        a.getCustomer().setEmail(c.getEmail());
+        a.getCustomer().setDateOfBirth(c.getDateOfBirth());
         a.setType(createAccountRequest.type == null ? AccountType.SAVINGS : createAccountRequest.type);
         a.setAccountNumber("ACC-" + UUID.randomUUID().toString().substring(0,8).toUpperCase());
         a.setBalance(BigDecimal.valueOf(createAccountRequest.initialDeposit == null ? 0.0 : createAccountRequest.initialDeposit));
